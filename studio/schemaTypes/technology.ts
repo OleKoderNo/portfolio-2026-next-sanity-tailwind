@@ -38,6 +38,13 @@ export const technology = defineType({
       validation: (Rule) => Rule.required().min(1).max(5),
     }),
     defineField({
+      name: 'featured',
+      title: 'Featured in tech stack',
+      type: 'boolean',
+      description: 'Show this technology in the main tech stack section.',
+      initialValue: true,
+    }),
+    defineField({
       name: 'orderRank',
       title: 'Order rank',
       type: 'string',
@@ -48,11 +55,12 @@ export const technology = defineType({
     select: {
       title: 'title',
       skillLevel: 'skillLevel',
+      featured: 'featured',
     },
-    prepare({title, skillLevel}) {
+    prepare({title, skillLevel, featured}) {
       return {
         title,
-        subtitle: skillLevel ? `Skill: ${skillLevel}/5` : 'No skill set',
+        subtitle: `${featured ? 'Featured • ' : ''}Skill: ${skillLevel}/5`,
       }
     },
   },
