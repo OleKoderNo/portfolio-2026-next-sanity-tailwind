@@ -48,7 +48,8 @@ export const homePageQuery = groq`
     "technologies": technologies[]->{
       _id,
       title,
-      "slug": slug.current
+      "slug": slug.current,
+      skillLevel
     }
   },
 
@@ -75,7 +76,8 @@ export const homePageQuery = groq`
   "technologies": *[_type == "technology"] | order(title asc){
     _id,
     title,
-    "slug": slug.current
+    "slug": slug.current,
+    skillLevel
   }
 }
 `;
