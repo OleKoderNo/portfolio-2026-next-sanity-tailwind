@@ -1,6 +1,6 @@
-import {defineField, defineType} from 'sanity'
+import {defineType, defineField} from 'sanity'
 
-export const projectType = defineType({
+export const project = defineType({
   name: 'project',
   title: 'Project',
   type: 'document',
@@ -8,7 +8,7 @@ export const projectType = defineType({
     defineField({
       name: 'title',
       title: 'Title',
-      type: 'string',
+      type: 'localizedString',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -16,34 +16,38 @@ export const projectType = defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
-        maxLength: 96,
+        source: (doc: any) => doc?.title?.en || doc?.title?.no,
       },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
-      rows: 3,
+      name: 'cardImage',
+      title: 'Card image',
+      type: 'image',
+      options: {hotspot: true},
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'cardExcerpt',
+      title: 'Card excerpt',
+      type: 'localizedText',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
-      title: 'Description',
+      title: 'Full description',
+      type: 'localizedText',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'technologies',
+      title: 'Technologies',
       type: 'array',
-      of: [{type: 'block'}],
+      of: [{type: 'reference', to: [{type: 'technology'}]}],
     }),
     defineField({
-      name: 'coverImage',
-      title: 'Cover image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: 'projectUrl',
-      title: 'Project URL',
+      name: 'liveUrl',
+      title: 'Live URL',
       type: 'url',
     }),
     defineField({
@@ -52,36 +56,21 @@ export const projectType = defineType({
       type: 'url',
     }),
     defineField({
-      name: 'technologies',
-      title: 'Technologies',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{type: 'technology'}],
-        },
-      ],
-      options: {
-        layout: 'tags',
-      },
-    }),
-    defineField({
       name: 'featured',
       title: 'Featured',
       type: 'boolean',
       initialValue: false,
     }),
     defineField({
-      name: 'completedAt',
-      title: 'Completed at',
-      type: 'date',
+      name: 'orderRank',
+      title: 'Order rank',
+      type: 'number',
     }),
   ],
   preview: {
     select: {
-      title: 'title',
-      media: 'coverImage',
-      subtitle: 'excerpt',
+      title: 'title.en',
+      media: 'cardImage',
     },
   },
 })
