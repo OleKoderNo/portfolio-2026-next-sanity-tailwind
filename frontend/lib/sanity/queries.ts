@@ -72,8 +72,8 @@ export const homePageQuery = groq`
     "volunteeringBody": volunteeringBody[$locale]
   },
 
-  // Fetch technology tags used for filtering projects
-  "technologies": *[_type == "technology"] | order(title asc){
+  // Fetch technology tags in manual Sanity order
+  "technologies": *[_type == "technology"] | order(orderRank asc){
     _id,
     title,
     "slug": slug.current,
