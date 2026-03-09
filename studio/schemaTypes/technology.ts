@@ -1,6 +1,6 @@
 import {defineField, defineType} from 'sanity'
 
-export const technology = defineType({
+export const technologyType = defineType({
   name: 'technology',
   title: 'Technology',
   type: 'document',
@@ -36,6 +36,12 @@ export const technology = defineType({
         ],
       },
       validation: (Rule) => Rule.required().min(1).max(5),
+    }),
+    defineField({
+      name: 'orderRank',
+      title: 'Order rank',
+      type: 'string',
+      hidden: true,
     }),
   ],
   preview: {
