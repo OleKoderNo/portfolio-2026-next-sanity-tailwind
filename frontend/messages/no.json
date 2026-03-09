@@ -1,0 +1,14 @@
+{
+	"home": {
+		"projects": "Prosjekter",
+		"experience": "Erfaring",
+		"techstack": "Teknologistack",
+		"about": "Om meg",
+		"documents": "Dokumenter"
+	},
+	"buttons": {
+		"liveDemo": "Live demo",
+		"github": "GitHub repository",
+		"readMore": "Les mer"
+	}
+}

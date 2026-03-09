@@ -1,0 +1,14 @@
+{
+	"home": {
+		"projects": "Projects",
+		"experience": "Experience",
+		"techstack": "Tech stack",
+		"about": "About me",
+		"documents": "Documents"
+	},
+	"buttons": {
+		"liveDemo": "Live demo",
+		"github": "GitHub repository",
+		"readMore": "Read more"
+	}
+}
