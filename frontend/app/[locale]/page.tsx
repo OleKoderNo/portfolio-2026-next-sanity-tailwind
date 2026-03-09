@@ -1,32 +1,54 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { HeroSection } from "@/components/sections/HeroSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { ExperienceSection } from "@/components/sections/ExperienceSection";
+import { TechStackSection } from "@/components/sections/TechStackSection";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { DocumentsSection } from "@/components/sections/DocumentsSection";
+import { sanityClient } from "@/lib/sanity/client";
+import { homePageQuery } from "@/lib/sanity/queries";
 
-export default function HomePage() {
-	const t = useTranslations("home");
+type Props = {
+	params: Promise<{ locale: string }>;
+};
+
+const documents = [
+	{
+		title: "CV",
+		description: "My latest CV",
+		href: "/documents/CV.pdf",
+	},
+	{
+		title: "Cover Letter",
+		description: "Why you should hire me",
+		href: "/documents/cover-letter.pdf",
+	},
+	{
+		title: "Project Reflections",
+		description: "Reflections and improvements on earlier school assignments",
+		href: "/documents/project-reflections.pdf",
+	},
+];
+
+export default async function HomePage({ params }: Props) {
+	const { locale } = await params;
+	const t = await getTranslations("home");
+
+	const data = await sanityClient.fetch(homePageQuery, { locale });
 
 	return (
-		<main>
-			<h1>Ole Håvard Furuseth Bergan</h1>
-			<p>Frontend • React / Next.js • Tailwind • JavaScript / TypeScript</p>
+		<main className="pb-10">
+			<HeroSection />
 
-			<section>
-				<h2>{t("projects")}</h2>
-			</section>
+			<ProjectsSection title={t("projects")} projects={data.projects ?? []} />
 
-			<section>
-				<h2>{t("experience")}</h2>
-			</section>
+			<ExperienceSection title={t("experience")} items={data.experience ?? []} />
 
-			<section>
-				<h2>{t("techstack")}</h2>
-			</section>
+			<TechStackSection title={t("techstack")} technologies={data.technologies ?? []} />
 
-			<section>
-				<h2>{t("about")}</h2>
-			</section>
+			<AboutSection title={t("about")} about={data.about} />
 
-			<section>
-				<h2>{t("documents")}</h2>
-			</section>
+			<DocumentsSection title={t("documents")} documents={documents} />
 		</main>
 	);
 }
