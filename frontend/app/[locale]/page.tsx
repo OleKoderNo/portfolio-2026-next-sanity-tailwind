@@ -23,11 +23,6 @@ const documents = [
 		description: "Why you should hire me",
 		href: "/documents/cover-letter.pdf",
 	},
-	{
-		title: "Project Reflections",
-		description: "Reflections and improvements on earlier school assignments",
-		href: "/documents/project-reflections.pdf",
-	},
 ];
 
 export default async function HomePage({ params }: Props) {
