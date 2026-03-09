@@ -6,6 +6,7 @@ type Technology = {
 	_id: string;
 	title: string;
 	slug: string;
+	skillLevel?: number;
 };
 
 type TechStackSectionProps = {
@@ -19,7 +20,7 @@ export function TechStackSection({ title, technologies }: TechStackSectionProps)
 			<Section title={title}>
 				<div className="flex flex-wrap gap-3">
 					{technologies.map((tech) => (
-						<Chip key={tech._id}>{tech.title}</Chip>
+						<Chip key={tech._id} label={tech.title} skillLevel={tech.skillLevel} />
 					))}
 				</div>
 			</Section>

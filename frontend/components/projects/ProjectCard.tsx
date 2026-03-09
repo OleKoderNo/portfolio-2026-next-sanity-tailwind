@@ -31,7 +31,7 @@ export function ProjectCard({
 
 	return (
 		<article className="overflow-hidden rounded-2xl border border-white/15 bg-white/3 transition hover:-translate-y-0.5 hover:bg-white/6">
-			<div className="relative aspect-16/10 w-full bg-white/10">
+			<div className="relative aspect-[16/10] w-full bg-white/10">
 				{imageUrl ? (
 					<Image
 						src={imageUrl}
@@ -49,7 +49,7 @@ export function ProjectCard({
 
 				<div className="mt-4 flex flex-wrap gap-2">
 					{technologies.map((tech) => (
-						<Chip key={tech._id}>{tech.title}</Chip>
+						<Chip key={tech._id} label={tech.title} skillLevel={tech.skillLevel} />
 					))}
 				</div>
 
