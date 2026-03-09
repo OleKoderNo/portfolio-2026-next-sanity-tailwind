@@ -1,5 +1,15 @@
-import {aboutType} from './about'
-import {projectType} from './project'
-import {technologyType} from './technology'
+import {project} from './project'
+import {technology} from './technology'
+import {experience} from './experience'
+import {aboutPage} from './aboutPage'
+import {localizedString} from './localizedString'
+import {localizedText} from './localizedText'
 
-export const schemaTypes = [projectType, technologyType, aboutType]
+export const schemaTypes = [
+  project,
+  technology,
+  experience,
+  aboutPage,
+  localizedString,
+  localizedText,
+]
