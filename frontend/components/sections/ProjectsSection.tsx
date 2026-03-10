@@ -29,9 +29,18 @@ type Project = {
 type ProjectsSectionProps = {
 	title: string;
 	projects: Project[];
+	viewAllHref?: string;
+	viewAllLabel?: string;
+	showViewAllButton?: boolean;
 };
 
-export function ProjectsSection({ title, projects }: ProjectsSectionProps) {
+export function ProjectsSection({
+	title,
+	projects,
+	viewAllHref = "/projects",
+	viewAllLabel = "View all projects",
+	showViewAllButton = true,
+}: ProjectsSectionProps) {
 	const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
 
 	const activeProject = useMemo(
@@ -62,9 +71,11 @@ export function ProjectsSection({ title, projects }: ProjectsSectionProps) {
 					})}
 				</div>
 
-				<div className="mt-6">
-					<Button href="/projects">View all projects</Button>
-				</div>
+				{showViewAllButton ? (
+					<div className="mt-6">
+						<Button href={viewAllHref}>{viewAllLabel}</Button>
+					</div>
+				) : null}
 
 				{activeProject ? (
 					<ProjectDialog
