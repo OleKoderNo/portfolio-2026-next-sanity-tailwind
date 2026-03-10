@@ -1,33 +1,41 @@
+import type { Metadata } from "next";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { getMessages, type Locale } from "../../lib/i18n/index";
 import "../globals.css";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import { notFound } from "next/navigation";
-import { routing } from "@/lib/i18n/routing";
 
-type Props = {
-	children: React.ReactNode;
-	params: Promise<{ locale: string }>;
-};
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+	const { locale } = await params;
+	const t = getMessages(locale);
 
-export function generateStaticParams() {
-	return routing.locales.map((locale) => ({ locale }));
+	return {
+		title: t.metadata.siteTitle,
+		description: t.metadata.siteDescription,
+	};
 }
 
-export default async function LocaleLayout({ children, params }: Props) {
+export default async function LocaleLayout({
+	children,
+	params,
+}: Readonly<{
+	children: React.ReactNode;
+	params: Promise<{ locale: Locale }>;
+}>) {
 	const { locale } = await params;
-
-	// Stop invalid locales like /fr if only en/no are allowed
-	if (!routing.locales.includes(locale as "en" | "no")) {
-		notFound();
-	}
-
-	// Load translation messages for the current locale
-	const messages = await getMessages();
+	const t = getMessages(locale);
 
 	return (
 		<html lang={locale}>
-			<body>
-				<NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+			<body className="min-h-screen bg-neutral-950 text-white antialiased">
+				<div className="flex min-h-screen flex-col">
+					<Navbar locale={locale} t={t} />
+					<main className="flex-1">{children}</main>
+					<Footer locale={locale} t={t} />
+				</div>
 			</body>
 		</html>
 	);
