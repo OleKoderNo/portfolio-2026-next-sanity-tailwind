@@ -40,3 +40,34 @@ textarea,
 select {
 	font: inherit;
 }
+
+dialog {
+	margin: auto;
+}
+
+dialog::backdrop {
+	background: rgba(0, 0, 0, 0.55);
+}
+
+body.dialog-open #page-content {
+	filter: blur(10px);
+	transform: scale(0.995);
+	transition:
+		filter 0.2s ease,
+		transform 0.2s ease;
+}
+
+dialog[open] {
+	animation: dialogFade 0.18s ease-out;
+}
+
+@keyframes dialogFade {
+	from {
+		opacity: 0;
+		transform: translateY(12px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
