@@ -7,6 +7,23 @@
 		"documents": "Dokumenter",
 		"viewAllProjects": "Se alle prosjekter"
 	},
+	"aboutPage": {
+		"title": "Om meg",
+		"description": "Litt mer om hvem jeg er, hva jeg jobber med, og hva jeg liker utenfor utvikling.",
+		"sectionTitle": "Om meg"
+	},
+	"projectsPage": {
+		"title": "Alle prosjekter",
+		"description": "En samling av prosjekter jeg har bygget med fokus på frontend-utvikling, tilgjengelige grensesnitt og vedlikeholdbar kode.",
+		"sectionTitle": "Prosjekter"
+	},
+	"contactPage": {
+		"title": "Kontakt",
+		"description": "Ta gjerne kontakt hvis du vil samarbeide, ansette meg eller bare si hei.",
+		"emailLabel": "E-post",
+		"githubLabel": "GitHub",
+		"linkedinLabel": "LinkedIn"
+	},
 	"buttons": {
 		"liveDemo": "Live demo",
 		"github": "GitHub-repositorium",
@@ -23,13 +40,6 @@
 		"projects": "Prosjekter",
 		"github": "GitHub",
 		"linkedin": "LinkedIn"
-	},
-	"projectsPage": {
-		"eyebrow": "Portefølje",
-		"title": "Alle prosjekter",
-		"description": "En samling av prosjekter jeg har laget med fokus på frontend-utvikling, tilgjengelige grensesnitt og kode som er lett å vedlikeholde.",
-		"empty": "Ingen prosjekter funnet ennå.",
-		"noImage": "Ingen bilde"
 	},
 	"metadata": {
 		"siteTitle": "OleKoder Portefølje",
