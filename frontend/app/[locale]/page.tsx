@@ -32,7 +32,7 @@ export default async function HomePage({ params }: Props) {
 	const data = await sanityClient.fetch(homePageQuery, { locale });
 
 	return (
-		<main className="pb-10">
+		<main id="page-content" className="pb-10">
 			<HeroSection />
 
 			<ProjectsSection title={t("projects")} projects={data.projects ?? []} />
