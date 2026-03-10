@@ -126,7 +126,6 @@ export function Navbar({ locale, t }: NavbarProps) {
 									<Link
 										key={item}
 										href={getLocalePath(item)}
-										locale={false}
 										className={[
 											"rounded-full px-3 py-1 text-xs font-semibold uppercase transition",
 											active ? "bg-white text-black" : "text-neutral-300 hover:text-white",
@@ -206,7 +205,6 @@ export function Navbar({ locale, t }: NavbarProps) {
 								<Link
 									key={item}
 									href={getLocalePath(item)}
-									locale={false}
 									onClick={() => setIsOpen(false)}
 									className={[
 										"rounded-full px-3 py-2 text-xs font-semibold uppercase transition",
