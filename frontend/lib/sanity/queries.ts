@@ -43,3 +43,32 @@ export const homePageQuery = groq`
   }
 }
 `;
+
+export const aboutPageQuery = groq`
+*[_type == "aboutPage"][0]{
+  "intro": intro[$locale],
+  "hobbiesTitle": hobbiesTitle[$locale],
+  "hobbiesBody": hobbiesBody[$locale],
+  "volunteeringTitle": volunteeringTitle[$locale],
+  "volunteeringBody": volunteeringBody[$locale]
+}
+`;
+
+export const projectsPageQuery = groq`
+*[_type == "project"] | order(orderRank asc){
+  _id,
+  "title": title[$locale],
+  "slug": slug.current,
+  "excerpt": cardExcerpt[$locale],
+  "description": description[$locale],
+  cardImage,
+  liveUrl,
+  githubUrl,
+  "technologies": technologies[]->{
+    _id,
+    title,
+    "slug": slug.current,
+    skillLevel
+  }
+}
+`;
