@@ -88,7 +88,7 @@ export function ProjectDialog({
 				</button>
 
 				<div className="grid md:grid-cols-[1.2fr_0.8fr]">
-					<div className="relative aspect-[16/10] bg-white/10 md:aspect-auto md:min-h-[28rem]">
+					<div className="relative aspect-16/10 bg-white/10 md:aspect-auto md:min-h-112">
 						{imageUrl ? (
 							<Image
 								src={imageUrl}
