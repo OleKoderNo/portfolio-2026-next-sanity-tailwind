@@ -4,11 +4,37 @@
 		"experience": "Experience",
 		"techstack": "Tech stack",
 		"about": "About me",
-		"documents": "Documents"
+		"documents": "Documents",
+		"viewAllProjects": "View all projects"
 	},
 	"buttons": {
 		"liveDemo": "Live demo",
 		"github": "GitHub repository",
 		"readMore": "Read more"
+	},
+	"nav": {
+		"home": "Home",
+		"projects": "Projects",
+		"about": "About",
+		"contact": "Contact"
+	},
+	"footer": {
+		"rights": "All rights reserved.",
+		"projects": "Projects",
+		"github": "GitHub",
+		"linkedin": "LinkedIn"
+	},
+	"projectsPage": {
+		"eyebrow": "Portfolio",
+		"title": "All Projects",
+		"description": "A collection of projects I've built with a focus on frontend development, accessible interfaces, and maintainable code.",
+		"empty": "No projects found yet.",
+		"noImage": "No image"
+	},
+	"metadata": {
+		"siteTitle": "OleKoder Portfolio",
+		"siteDescription": "Frontend developer portfolio built with Next.js, Tailwind CSS, and Sanity.",
+		"projectsTitle": "Projects",
+		"projectsDescription": "A full overview of my portfolio projects."
 	}
 }

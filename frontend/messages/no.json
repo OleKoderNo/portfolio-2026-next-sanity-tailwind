@@ -4,11 +4,37 @@
 		"experience": "Erfaring",
 		"techstack": "Teknologistack",
 		"about": "Om meg",
-		"documents": "Dokumenter"
+		"documents": "Dokumenter",
+		"viewAllProjects": "Se alle prosjekter"
 	},
 	"buttons": {
 		"liveDemo": "Live demo",
-		"github": "GitHub repository",
+		"github": "GitHub-repositorium",
 		"readMore": "Les mer"
+	},
+	"nav": {
+		"home": "Hjem",
+		"projects": "Prosjekter",
+		"about": "Om",
+		"contact": "Kontakt"
+	},
+	"footer": {
+		"rights": "Alle rettigheter reservert.",
+		"projects": "Prosjekter",
+		"github": "GitHub",
+		"linkedin": "LinkedIn"
+	},
+	"projectsPage": {
+		"eyebrow": "Portefølje",
+		"title": "Alle prosjekter",
+		"description": "En samling av prosjekter jeg har laget med fokus på frontend-utvikling, tilgjengelige grensesnitt og kode som er lett å vedlikeholde.",
+		"empty": "Ingen prosjekter funnet ennå.",
+		"noImage": "Ingen bilde"
+	},
+	"metadata": {
+		"siteTitle": "OleKoder Portefølje",
+		"siteDescription": "Frontend-utviklerportefølje bygget med Next.js, Tailwind CSS og Sanity.",
+		"projectsTitle": "Prosjekter",
+		"projectsDescription": "En full oversikt over porteføljeprosjektene mine."
 	}
 }
