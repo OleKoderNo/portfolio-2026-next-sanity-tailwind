@@ -1,6 +1,10 @@
+"use client";
+
+import { useMemo, useState } from "react";
 import { Section } from "../layout/Section";
 import { Container } from "../layout/Container";
 import { ProjectCard } from "../projects/ProjectCard";
+import { ProjectDialog } from "../projects/ProjectDialog";
 import { Button } from "../ui/Button";
 
 type Technology = {
@@ -13,12 +17,13 @@ type Technology = {
 type Project = {
 	_id: string;
 	title: string;
+	slug: string;
 	excerpt: string;
+	description?: string;
 	technologies: Technology[];
 	liveUrl?: string;
 	githubUrl?: string;
 	cardImage?: unknown;
-	slug: string;
 };
 
 type ProjectsSectionProps = {
@@ -27,6 +32,13 @@ type ProjectsSectionProps = {
 };
 
 export function ProjectsSection({ title, projects }: ProjectsSectionProps) {
+	const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
+
+	const activeProject = useMemo(
+		() => projects.find((project) => project._id === activeProjectId) ?? null,
+		[activeProjectId, projects],
+	);
+
 	return (
 		<Container>
 			<Section title={title}>
@@ -43,6 +55,7 @@ export function ProjectsSection({ title, projects }: ProjectsSectionProps) {
 									liveUrl={project.liveUrl}
 									githubUrl={project.githubUrl}
 									image={project.cardImage}
+									onOpen={() => setActiveProjectId(project._id)}
 								/>
 							</div>
 						);
@@ -52,6 +65,19 @@ export function ProjectsSection({ title, projects }: ProjectsSectionProps) {
 				<div className="mt-6">
 					<Button href="/projects">View all projects</Button>
 				</div>
+
+				{activeProject ? (
+					<ProjectDialog
+						open={Boolean(activeProject)}
+						onClose={() => setActiveProjectId(null)}
+						title={activeProject.title}
+						description={activeProject.description}
+						technologies={activeProject.technologies}
+						liveUrl={activeProject.liveUrl}
+						githubUrl={activeProject.githubUrl}
+						image={activeProject.cardImage}
+					/>
+				) : null}
 			</Section>
 		</Container>
 	);
